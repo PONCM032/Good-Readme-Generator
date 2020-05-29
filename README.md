@@ -12,16 +12,19 @@ This site was can be found in the following [GitHub repository](URL).
 ---
   
 Below are the following commmands needed for this project:
--To install :
-  -npm i
--To test : 
-  -npm test
+
++ To install :
+
+  + npm i
+
+- To test : 
+
+  - npm test
 
 ---
 
-##This project was complete by **MPONC032**
-
-
+## This project was complete by **MPONC032**
+Feel free to contact at <melanieponce@hotmail.com>
 student run
 
     

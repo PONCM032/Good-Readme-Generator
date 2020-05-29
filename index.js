@@ -90,6 +90,15 @@ function generateReadMe(answer) {
 return `
 # **${answer.project}** ${genLicense}
 
+
+## Table of Contents
+
+* [Description](#description)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Commands](#commands)
+
+
 ### Description:
 
 ${answer.description}
@@ -99,24 +108,35 @@ ${answer.description}
 This site was can be found in the following [GitHub repository](${answer.URL}).
 
 ---
-  
-Below are the following commmands needed for this project:
 
--To install :
+## Usage
 
-  -${answer.command}
-
--To test : 
-
-  -${answer.test}
+${answer.using}
 
 ---
 
-##This project was complete by **${answer.name}**
+## Contributing:
 
-
-${answer.using}
 ${answer.contributing}
+
+---
+
+## Commands
+  
+Below are the following commmands needed for this project:
+
+- To install :
+
+  - ${answer.command}
+
+- To test : 
+
+  - ${answer.test}
+
+---
+
+## This project was completed by **${answer.name}**
+Feel free to contact at <${answer.email}>
     `
     
   };
