@@ -11,12 +11,6 @@ function promptUser() {
       type: "input",
       name: "name",
       message: "What is your GitHub username?",
-      // validate: answer => {
-      //     if (answer !== "") {
-      //       return true;
-      //     }
-      //     return "Please enter at least one character.";
-      //   }
   },
   {
       type: "input",
