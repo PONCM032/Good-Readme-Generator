@@ -2,27 +2,21 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
-//
 const writeFileAsync = util.promisify(fs.writeFile);
-// const { questions } = require("./Questions");
 
-//call questions array in Questions.js
-// function promptUser() {
-//   return inquirer.prompt(questions);
-// };
-
+//inquirer array
 function promptUser() {
   return inquirer.prompt([
   {
       type: "input",
       name: "name",
       message: "What is your GitHub username?",
-      validate: answer => {
-          if (answer !== "") {
-            return true;
-          }
-          return "Please enter at least one character.";
-        }
+      // validate: answer => {
+      //     if (answer !== "") {
+      //       return true;
+      //     }
+      //     return "Please enter at least one character.";
+      //   }
   },
   {
       type: "input",
@@ -48,7 +42,7 @@ function promptUser() {
       type: "list",
       name: "license",
       message: "What kind of license should your project have?",
-      choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
+      choices: ["MIT","APACHE 2.0","GPL 3.0","BSD 3","MPL 2.0","None"]
   },
   {
       type: "input",
@@ -75,27 +69,56 @@ function promptUser() {
 ]);
 }
 
+function generateReadMe(answer) {
 
+  let genLicense
 
-  function generateReadMe(answer) {
-    return `
-  **#${answer.project}**
-
-  ${answer.description}
-
-  ##${answer.name}
-
-  ---
+  if(answer.license === "MIT"){
+    genLicense = "[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)";
+  }else if(answer.license === "APACHE 2.0") {
+    genLicense = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+  }else if(answer.license === "GPL 3.0") {
+    genLicense = "[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)";
+  }else if(answer.license === "BSD 3"){
+    genLicense = "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+  }else if(answer.license === "MPL 2.0"){
+    genLicense = "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)";
+  }else{
+    genLicense = "[![License: Unlicensed](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://unlicense.org/)";
+    }
   
-  This site was built using [GitHub Pages](${answer.URL}).
+return `
+# **${answer.project}** ${genLicense}
 
+### Description:
+
+${answer.description}
+
+---
+
+This site was can be found in the following [GitHub repository](${answer.URL}).
+
+---
   
-  ${answer.license}
-  ${answer.command}
-  ${answer.test}
-  ${answer.using}
-  ${answer.contributing}
+Below are the following commmands needed for this project:
+
+-To install :
+
+  -${answer.command}
+
+-To test : 
+
+  -${answer.test}
+
+---
+
+##This project was complete by **${answer.name}**
+
+
+${answer.using}
+${answer.contributing}
     `
+    
   };
 
 promptUser().then(function(answers) {
@@ -107,60 +130,3 @@ promptUser().then(function(answers) {
 }).catch(function(err) {
   console.log(err);
 });
-
-//# creates heading
-//## creates desciptions
-
-//psuedocode
-//create npm package.json
-//will have all dependencies
-//install inquirer
-
-//have .gitignore for node_modules
-
-//require your dependencies
-//write read me file - fs
-
-
-//write down prompts to get required info from user
-//array
-//each question is an object
-//type, name, message (autofillers)
-
-//Build out ReadMe template
-//make it look like how you want it
-//then bring it into JS file
-
-//write the file
-//plug and play with gathered info
-
-// fs.writeFile("README.md", generateReadMe, function(err) {
-//  if(err){
-//    console.log(err);
-//   }else{
-//     console.log("ReadMe has been successfully generated!");
-//   }
-// }); //init();
-
-// async function init() {
-//   t
-// init();
-
-// function writeToFile(fileName, data) {
-// }
-
-// function init() {
-
-// }
-
-// init();
-
-
-// try {
-//   // const answer = await promptUser();
-//   // const readMe = generateReadMe(answers);
-//   // await writeFileAsync("build/README.md", readMe);
-//   console.log("ReadMe has been successfully generated!");
-// } catch (err) {
-//   console.log(err);
-// }
