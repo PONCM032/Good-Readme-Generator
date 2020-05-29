@@ -24,7 +24,7 @@ This site was can be found in the following [GitHub repository](https://github.c
 
 See GIF below
 
-![](https://github.com/PONCM032/Good-Readme-Generator/tree/master/utils/Demo.gif)
+![](https://github.com/PONCM032/Good-Readme-Generator/blob/master/utils/Demo.gif)
 
 ---
 
